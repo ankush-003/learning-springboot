@@ -29,5 +29,15 @@ public class TestData {
                 .date("2021-01-01")
                 .status("PENDING")
                 .build();
+//        sample json
+//        {
+//            "paymentId": "1",
+//                "userId": "2",
+//                "friendIds": ["3"],
+//                "description": "test",
+//                "amount": "100",
+//                "date": "2021-01-01",
+//                "status": "PENDING"
+//        }
     }
 }

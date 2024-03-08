@@ -8,6 +8,19 @@ a platform for sharing payments hassle-free
 - The `@Entity` annotation is used to mark the class as an entity.
 - The `@Id` annotation is used to mark the field as a primary key.
 - In Lombok, the `@Data` annotation is used to generate getters, setters, constructors, and other boilerplate code.
+- Lombok also provides `@Slf4j` to generate a logger.
+```java
+    @Entity
+    @Data
+    @Slf4j
+    public class User {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+        private String name;
+        private String email;
+    }
+```
 
 ## Repositories
 - A repository is a mechanism for encapsulating storage, retrieval, and search behavior which emulates a collection of objects.
@@ -46,6 +59,7 @@ a platform for sharing payments hassle-free
           private UserService userService;
     } 
    ```
+- `verify` is used to verify that a method has been called, we can use `times` to specify the number of invocations.
 
 ## Controllers
 - A controller is a component that handles HTTP requests and returns an HTTP response.
@@ -69,4 +83,13 @@ a platform for sharing payments hassle-free
 - `MockMvc` is used to test the controller layer, without starting the server physically.
 - `MockMvcRequestBuilders` is used to prepare a request.
 
+> `@DirtyContext` is used to indicate that the test method has modified the context and that the context should be reset after the test method has been executed.
 
+```java
+    @RunWith(SpringRunner.class)
+    @SpringBootTest
+    @AutoConfigureMockMvc
+    @DirtyContext
+    public class UserControllerTest {
+    }
+```
