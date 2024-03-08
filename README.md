@@ -93,3 +93,7 @@ a platform for sharing payments hassle-free
     public class UserControllerTest {
     }
 ```
+## Postman Testing 🚀
+![image](https://github.com/ankush-003/learning-springboot/assets/94037471/bd1c9a5a-2cf9-4365-91a2-977ab1ba8c29)
+
+
