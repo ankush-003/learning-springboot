@@ -1,5 +1,50 @@
 # JShare
 a platform for sharing payments hassle-free
+
+
+## Beans
+- A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
+- `@Bean` is used to define a bean.
+- `@Configuration` is used to define a configuration class, which contains methods annotated with `@Bean`.
+```java
+    @Configuration
+    public class AppConfig {
+        @Bean
+        public UserService userService() {
+            return new UserService();
+        }
+    }
+```
+- `@Qualifier` is used to specify which bean to inject, when there are multiple beans of the same type.
+```java
+    @Autowired
+    @Qualifier("userService")
+    private UserService userService;
+```
+- `@Value` is used to inject a value from the properties file. (Mention path of the properties file in `@PropertySource`)
+```java
+    @Value("${app.name}")
+    private String appName;
+```
+- `@JsonProperty` is used to map a property to a field.
+```java
+    @JsonProperty("name")
+    private String name;
+```
+        
+## Spring App Layers
+- Spring applications are typically built in layers.
+- The layers are:
+  - Presentation Layer
+  - Service Layer
+  - Repository Layer
+  - Database Layer
+### Persistence Layer
+- The persistence layer is responsible for storing, retrieving, and managing data.
+- CRUD operations are performed in the persistence layer.
+
+
+
 ## JPA
 - JPA is a specification for accessing, persisting, and managing data between Java objects / classes and a relational database.
 ## Entities
@@ -92,4 +137,26 @@ a platform for sharing payments hassle-free
     @DirtyContext
     public class UserControllerTest {
     }
+```
+
+## Connecting to CockroachDB
+- CockroachDB is a distributed SQL database built on a transactional and strongly-consistent key-value store.
+- `spring.datasource.url` is used to specify the database URL.
+- Update the `application.yml` file with the database URL.
+```yaml
+spring:
+  datasource:
+    url: <Visit the CockroachDB UI to get the URL>
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 ```
