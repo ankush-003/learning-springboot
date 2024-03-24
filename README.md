@@ -1,50 +1,5 @@
 # JShare
 a platform for sharing payments hassle-free
-
-
-## Beans
-- A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
-- `@Bean` is used to define a bean.
-- `@Configuration` is used to define a configuration class, which contains methods annotated with `@Bean`.
-```java
-    @Configuration
-    public class AppConfig {
-        @Bean
-        public UserService userService() {
-            return new UserService();
-        }
-    }
-```
-- `@Qualifier` is used to specify which bean to inject, when there are multiple beans of the same type.
-```java
-    @Autowired
-    @Qualifier("userService")
-    private UserService userService;
-```
-- `@Value` is used to inject a value from the properties file. (Mention path of the properties file in `@PropertySource`)
-```java
-    @Value("${app.name}")
-    private String appName;
-```
-- `@JsonProperty` is used to map a property to a field.
-```java
-    @JsonProperty("name")
-    private String name;
-```
-        
-## Spring App Layers
-- Spring applications are typically built in layers.
-- The layers are:
-  - Presentation Layer
-  - Service Layer
-  - Repository Layer
-  - Database Layer
-### Persistence Layer
-- The persistence layer is responsible for storing, retrieving, and managing data.
-- CRUD operations are performed in the persistence layer.
-
-
-
 ## JPA
 - JPA is a specification for accessing, persisting, and managing data between Java objects / classes and a relational database.
 ## Entities
@@ -160,3 +115,8 @@ spring:
             non_contextual_creation: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 ```
+
+## Postman Testing 🚀
+![image](https://github.com/ankush-003/learning-springboot/assets/94037471/bd1c9a5a-2cf9-4365-91a2-977ab1ba8c29)
+
+
