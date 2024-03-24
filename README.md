@@ -8,6 +8,46 @@ a platform for sharing payments hassle-free
 ![image](https://github.com/ankush-003/learning-springboot/assets/94037471/e5fdd083-50d9-4bf3-b0d9-d5b442a7c820)
 ![image](https://github.com/ankush-003/learning-springboot/assets/94037471/39847976-2a28-4cdb-bf42-43fa52c870db)
 
+## Bean 
+- A bean is an object that is instantiated, assembled, and otherwise managed by a Spring IoC container.
+- two ways to define a bean:
+  - XML configuration file
+  - Java annotation
+- `@Component` is used to mark the class as a Spring bean.
+- `@Autowired` is used to inject a dependency into a class.
+```java
+    @Component
+    public class UserService {
+    }
+```
+- `@Configuration` is used to define a configuration class, which contains methods annotated with `@Bean`. This is another method to define a bean.
+```java
+    @Configuration
+    public class AppConfig {
+        @Bean
+        public UserService userService() {
+            return new UserService();
+        }
+    }
+```
+- `@ConfigurationProperties` is used to bind the configuration properties to a class (taken from the `application.yml` file).
+```java
+    @Configuration
+    @ConfigurationProperties(prefix = "app")
+    public class AppProperties {
+        private String name;
+        private String description;
+    }
+```
+- `@Value` is used to inject a value into a field.
+```java
+    @Component
+    public class UserService {
+        @Value("${app.name}")
+        private String name;
+    }
+```
+
 ## Entities
 - An entity is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 - Lombok is used to generate getters, setters, constructors, and other boilerplate code.
@@ -119,7 +159,8 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
 ```
 
 ## Postman Testing 🚀

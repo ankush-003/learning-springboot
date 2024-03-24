@@ -5,17 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 // payment for service layer
 public class Payment {
-    private String paymentId;
+    private Long id;
     private String userId;
-    private String[] friendIds;
+    private String friendId;
     private String description;
     private String amount;
-    private String date;
+    private Timestamp paymentDate;
     private String status;
 }

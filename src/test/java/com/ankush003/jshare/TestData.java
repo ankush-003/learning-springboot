@@ -1,7 +1,7 @@
 package com.ankush003.jshare;
 
 import com.ankush003.jshare.domain.Payment;
-import com.ankush003.jshare.domain.PaymentEntity;
+import com.ankush003.jshare.dao.impl.PaymentDaoImpl;
 
 public class TestData {
 
@@ -19,8 +19,8 @@ public class TestData {
                 .build();
     }
 
-    public static PaymentEntity testPaymentEntity() {
-        return PaymentEntity.builder()
+    public static PaymentDaoImpl testPaymentEntity() {
+        return PaymentDaoImpl.builder()
                 .paymentId("1")
                 .userId("2")
                 .friendIds(new String[]{"3"})

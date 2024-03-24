@@ -1,4 +1,4 @@
-package com.ankush003.jshare.domain;
+package com.ankush003.jshare.dao.impl;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "users")
-public class UserEntity {
+public class UserDaoImpl {
     @Id
-    private String userId;
+    private Long userId;
     private String name;
     private String email;
     private String password;

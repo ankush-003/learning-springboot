@@ -1,7 +1,7 @@
 package com.ankush003.jshare.services;
 
 import com.ankush003.jshare.domain.Payment;
-import com.ankush003.jshare.domain.PaymentEntity;
+import com.ankush003.jshare.dao.impl.PaymentDaoImpl;
 import com.ankush003.jshare.repositories.PaymentRepository;
 import com.ankush003.jshare.services.impl.PaymentServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PaymentServiceImplTest {
+public class PaymentDaoServiceImplTest {
 
     @Mock
     private PaymentRepository paymentRepository;
@@ -32,9 +32,9 @@ public class PaymentServiceImplTest {
     public void testThatPaymentIsSaved() {
         final Payment payment = testPayment();
 
-        final PaymentEntity paymentEntity = testPaymentEntity();
+        final PaymentDaoImpl paymentDaoImpl = testPaymentEntity();
 
-        when(paymentRepository.save(eq(paymentEntity))).thenReturn(paymentEntity);
+        when(paymentRepository.save(eq(paymentDaoImpl))).thenReturn(paymentDaoImpl);
 
         final Payment result = underTest.save(payment);
 
@@ -56,9 +56,9 @@ public class PaymentServiceImplTest {
     @Test
     public void testThatFindByIdReturnsPaymentWhenPaymentIsFound() {
         final Payment payment = testPayment();
-        final PaymentEntity paymentEntity = testPaymentEntity();
+        final PaymentDaoImpl paymentDaoImpl = testPaymentEntity();
 
-        when(paymentRepository.findById(eq(payment.getPaymentId()))).thenReturn(Optional.of(paymentEntity));
+        when(paymentRepository.findById(eq(payment.getPaymentId()))).thenReturn(Optional.of(paymentDaoImpl));
 
         final Optional<Payment> result = underTest.findById(payment.getPaymentId());
 
@@ -77,9 +77,9 @@ public class PaymentServiceImplTest {
     @Test
     public void testListPaymentsWhenPaymentsAreFound() {
         final Payment payment = testPayment();
-        final PaymentEntity paymentEntity = testPaymentEntity();
+        final PaymentDaoImpl paymentDaoImpl = testPaymentEntity();
 
-        when(paymentRepository.findAll()).thenReturn(List.of(paymentEntity));
+        when(paymentRepository.findAll()).thenReturn(List.of(paymentDaoImpl));
 
         final List<Payment> result = underTest.listPayments();
 
@@ -89,7 +89,7 @@ public class PaymentServiceImplTest {
     @Test
     public void testThatPaymentExists() {
         final Payment payment = testPayment();
-        final PaymentEntity paymentEntity = testPaymentEntity();
+        final PaymentDaoImpl paymentDaoImpl = testPaymentEntity();
 
         when(paymentRepository.existsById(eq(payment.getPaymentId()))).thenReturn(true);
 
@@ -101,7 +101,7 @@ public class PaymentServiceImplTest {
     @Test
     public void testThatPaymentIsDeleted() {
         final Payment payment = testPayment();
-        final PaymentEntity paymentEntity = testPaymentEntity();
+        final PaymentDaoImpl paymentDaoImpl = testPaymentEntity();
 
         underTest.deleteById(payment.getPaymentId());
         verify(paymentRepository, times(1)).deleteById(payment.getPaymentId());
