@@ -2,6 +2,12 @@
 a platform for sharing payments hassle-free
 ## JPA
 - JPA is a specification for accessing, persisting, and managing data between Java objects / classes and a relational database.
+
+## Spring App Layers
+![image](https://github.com/ankush-003/learning-springboot/assets/94037471/d6884874-40cc-46ef-828c-f7e7db20ee1c)
+![image](https://github.com/ankush-003/learning-springboot/assets/94037471/e5fdd083-50d9-4bf3-b0d9-d5b442a7c820)
+![image](https://github.com/ankush-003/learning-springboot/assets/94037471/39847976-2a28-4cdb-bf42-43fa52c870db)
+
 ## Entities
 - An entity is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 - Lombok is used to generate getters, setters, constructors, and other boilerplate code.
